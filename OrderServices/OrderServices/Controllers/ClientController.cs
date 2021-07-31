@@ -14,23 +14,33 @@ namespace OrderServices.Controllers
 	    }
 
 		[HttpPost]
+		[Route("CreateClientShipment")]
 	    public async Task<ClientShipmentCreationResponse> CreateClientShipment(
 		    ClientShipmentCreationRequest clientShipmentCreationRequest)
 	    {
 		    return await _repository.CreateClientShipment(clientShipmentCreationRequest);
 	    }
 
-	    public async Task<ClientShipmentStatusUpdateResponse> ClientShipmentStatusUpdate(
+
+	    [HttpPost]
+	    [Route("ClientShipmentStatusUpdate")]
+		public async Task<ClientShipmentStatusUpdateResponse> ClientShipmentStatusUpdate(
 		    ClientShipmentStatusUpdateRequest clientShipmentStatusUpdateRequest)
 	    {
 			return await _repository.ClientShipmentStatusUpdate(clientShipmentStatusUpdateRequest);
 		}
-	    public async Task<ClientQuoteResponse> ClientQuoteRequest(
+
+		[HttpPost]
+		[Route("ClientQuoteRequest")]
+		public async Task<ClientQuoteResponse> ClientQuoteRequest(
 		    ClientQuoteRequest clientQuoteRequest)
 	    {
 			return await _repository.ClientQuoteRequest(clientQuoteRequest);
 		}
-	    public async Task<ClientShipmentCancellationResponse> ClientShipmentCancellation(
+
+		[HttpPost]
+		[Route("ClientShipmentCancellation")]
+		public async Task<ClientShipmentCancellationResponse> ClientShipmentCancellation(
 		    ClientShipmentCancellationRequest clientShipmentCancellationRequest)
 	    {
 			return await _repository.ClientShipmentCancellation(clientShipmentCancellationRequest);

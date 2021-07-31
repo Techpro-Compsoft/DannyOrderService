@@ -5,6 +5,6 @@ namespace OrderServices.Data
 {
 	public interface IDapperRepository
 	{
-		T Execute<T>(string query, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure)`;
+		T Execute<T>(string query, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
 	}
 }
