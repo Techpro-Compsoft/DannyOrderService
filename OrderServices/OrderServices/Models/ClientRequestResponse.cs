@@ -3,7 +3,9 @@ using Newtonsoft.Json;
 
 namespace OrderServices.Models
 {
-    public class ClientShipmentCreationRequest
+    public abstract class BaseRequest{}
+    public abstract class BaseResponse{}
+    public class ClientShipmentCreationRequest : BaseRequest
     {
         [JsonProperty("Customer")]
         public Customer Customer { get; set; }
@@ -20,7 +22,7 @@ namespace OrderServices.Models
         [JsonProperty("Package")]
         public Package[] Package { get; set; }
     }
-    public class ClientShipmentCreationResponse
+    public class ClientShipmentCreationResponse : BaseResponse
     {
         [JsonProperty("LoadNumber")]
         public long LoadNumber { get; set; }
@@ -64,7 +66,7 @@ namespace OrderServices.Models
         [JsonProperty("StatusCode")]
         public long StatusCode { get; set; }
     }
-    public class ClientShipmentStatusUpdateRequest
+    public class ClientShipmentStatusUpdateRequest : BaseRequest
     {
 	    [JsonProperty("LoadNumber")]
 	    public string LoadNumber { get; set; }
@@ -78,7 +80,7 @@ namespace OrderServices.Models
 	    [JsonProperty("Accesskey")]
 	    public string Accesskey { get; set; }
     }
-    public class ClientShipmentStatusUpdateResponse
+    public class ClientShipmentStatusUpdateResponse : BaseResponse
     {
 	    [JsonProperty("LoadNumber")]
 	    public string LoadNumber { get; set; }
@@ -101,7 +103,7 @@ namespace OrderServices.Models
 	    [JsonProperty("Scans")]
 	    public Scan[] Scans { get; set; }
     }
-    public class ClientQuoteRequest
+    public class ClientQuoteRequest : BaseRequest
     {
 	    [JsonProperty("Customer")]
 	    public Customer Customer { get; set; }
@@ -118,7 +120,7 @@ namespace OrderServices.Models
 	    [JsonProperty("Package")]
 	    public Package[] Package { get; set; }
     }
-    public class ClientQuoteResponse
+    public class ClientQuoteResponse : BaseResponse
     {
 	    [JsonProperty("Details")]
 	    public Details Details { get; set; }
@@ -126,7 +128,7 @@ namespace OrderServices.Models
 	    [JsonProperty("PriceBreakup")]
 	    public PriceBreakup PriceBreakup { get; set; }
     }
-    public class ClientShipmentCancellationRequest
+    public class ClientShipmentCancellationRequest : BaseRequest
     {
 	    [JsonProperty("LoadNumber")]
 	    public long LoadNumber { get; set; }
@@ -141,7 +143,7 @@ namespace OrderServices.Models
 	    public string Accesskey { get; set; }
     }
 
-    public class ClientShipmentCancellationResponse
+    public class ClientShipmentCancellationResponse : BaseResponse
     {
         [JsonProperty("LoadNumber")]
 	    public long LoadNumber { get; set; }

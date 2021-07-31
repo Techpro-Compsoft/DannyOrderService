@@ -16,50 +16,37 @@ namespace OrderServices.Data
 		}
 
 		public async Task<ClientShipmentCreationResponse> CreateClientShipment(
-			ClientShipmentCreationRequest clientShipmentCreationRequest)
+			ClientShipmentCreationRequest request)
 		{
-			var @params = new DynamicParameters();
-			var data = JsonConvert.SerializeObject(clientShipmentCreationRequest);
-			@params.Add("jsonData", data, DbType.String, direction: ParameterDirection.Input);
-			@params.Add("@jsonOutput",null, DbType.String, direction: ParameterDirection.Output, Int32.MaxValue);
-			var result = await Task.FromResult(_repository.Execute<ClientShipmentCreationResponse>("[dbo].[sp_CreateClientShipment]"
-				, @params));
-			return result;
-			
+			return await Execute<ClientShipmentCreationResponse, ClientShipmentCreationRequest>(request);
 		}
 
 		public async Task<ClientShipmentStatusUpdateResponse> ClientShipmentStatusUpdate(
-			ClientShipmentStatusUpdateRequest clientShipmentStatusUpdateRequest)
+			ClientShipmentStatusUpdateRequest request)
 		{
-			var @params = new DynamicParameters();
-			var data = JsonConvert.SerializeObject(clientShipmentStatusUpdateRequest);
-			@params.Add("jsonData", data, DbType.String, direction: ParameterDirection.Input);
-			@params.Add("@jsonOutput", null, DbType.String, direction: ParameterDirection.Output, Int32.MaxValue);
-			var result = await Task.FromResult(_repository.Execute<ClientShipmentStatusUpdateResponse>("[dbo].[sp_ClientShipmentStatusUpdate]"
-				, @params));
-			return result;
+			return await Execute<ClientShipmentStatusUpdateResponse, ClientShipmentStatusUpdateRequest>(request);
 		}
 
 		public async Task<ClientQuoteResponse> ClientQuoteRequest(
-			ClientQuoteRequest clientQuoteRequest)
+			ClientQuoteRequest request)
 		{
-			var @params = new DynamicParameters();
-			var data = JsonConvert.SerializeObject(clientQuoteRequest);
-			@params.Add("jsonData", data, DbType.String, direction: ParameterDirection.Input);
-			@params.Add("@jsonOutput", null, DbType.String, direction: ParameterDirection.Output, Int32.MaxValue);
-			var result = await Task.FromResult(_repository.Execute<ClientQuoteResponse>("[dbo].[sp_ClientQuoteRequest]"
-				, @params));
-			return result;
+			return await Execute<ClientQuoteResponse, ClientQuoteRequest>(request);
 		}
 
 		public async Task<ClientShipmentCancellationResponse> ClientShipmentCancellation(
-			ClientShipmentCancellationRequest clientShipmentCancellationRequest)
+			ClientShipmentCancellationRequest request)
+		{
+			return await Execute<ClientShipmentCancellationResponse, ClientShipmentCancellationRequest>(request);
+		}
+
+		async Task<T> Execute<T,U>(
+			U request) where T : BaseResponse where U : BaseRequest
 		{
 			var @params = new DynamicParameters();
-			var data = JsonConvert.SerializeObject(clientShipmentCancellationRequest);
+			var data = JsonConvert.SerializeObject(request);
 			@params.Add("jsonData", data, DbType.String, direction: ParameterDirection.Input);
 			@params.Add("@jsonOutput", null, DbType.String, direction: ParameterDirection.Output, Int32.MaxValue);
-			var result = await Task.FromResult(_repository.Execute<ClientShipmentCancellationResponse>("[dbo].[sp_ClientShipmentCancellation]"
+			var result = await Task.FromResult(_repository.Execute<T>("[dbo].[sp_ClientShipmentCancellation]"
 				, @params));
 			return result;
 		}
