@@ -46,7 +46,17 @@ namespace OrderServices.Data
 			var data = JsonConvert.SerializeObject(request);
 			@params.Add("jsonData", data, DbType.String, direction: ParameterDirection.Input);
 			@params.Add("@jsonOutput", null, DbType.String, direction: ParameterDirection.Output, Int32.MaxValue);
-			var result = await Task.FromResult(_repository.Execute<T>("[dbo].[sp_ClientShipmentCancellation]"
+
+            //foreach (var property in typeof(U).GetProperties())
+            //{
+            //    if (property.CanRead && property.CanWrite)
+            //    {
+            //        var value = property.GetValue(request);
+            //        @params.Add(property.Name, value, DbType.Int64, direction: ParameterDirection.Input);
+            //    }
+            //}
+
+            var result = await Task.FromResult(_repository.Execute<T>("[dbo].[sp_ClientShipmentCancellation]"
 				, @params));
 			return result;
 		}

@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
-
+  
 namespace OrderServices.Models
 {
     public abstract class BaseRequest{}
@@ -21,6 +21,19 @@ namespace OrderServices.Models
 
         [JsonProperty("Package")]
         public Package[] Package { get; set; }
+
+        [JsonProperty("TemperatureControl")]
+        public long TemperatureControl { get; set; }
+
+        [JsonProperty("ChainOfCustody")]
+        public long ChainOfCustody { get; set; }
+
+        [JsonProperty("DangerousGoods")]
+        public long DangerousGoods { get; set; }
+
+        [JsonProperty("InsideDelivery")]
+        public long InsideDelivery { get; set; }
+
     }
     public class ClientShipmentCreationResponse : BaseResponse
     {
@@ -65,6 +78,20 @@ namespace OrderServices.Models
 
         [JsonProperty("StatusCode")]
         public long StatusCode { get; set; }
+
+        [JsonProperty("TemperatureControl")]
+        public long TemperatureControl { get; set; }
+
+        [JsonProperty("ChainOfCustody")]
+        public long ChainOfCustody { get; set; }
+
+        [JsonProperty("DangerousGoods")]
+        public long DangerousGoods { get; set; }
+
+        [JsonProperty("InsideDelivery")]
+        public long InsideDelivery { get; set; }
+
+
     }
     public class ClientShipmentStatusUpdateRequest : BaseRequest
     {
@@ -79,6 +106,19 @@ namespace OrderServices.Models
 
 	    [JsonProperty("Accesskey")]
 	    public string Accesskey { get; set; }
+
+        [JsonProperty("TemperatureControl")]
+        public long TemperatureControl { get; set; }
+
+        [JsonProperty("ChainOfCustody")]
+        public long ChainOfCustody { get; set; }
+
+        [JsonProperty("DangerousGoods")]
+        public long DangerousGoods { get; set; }
+
+        [JsonProperty("InsideDelivery")]
+        public long InsideDelivery { get; set; }
+
     }
     public class ClientShipmentStatusUpdateResponse : BaseResponse
     {
@@ -102,6 +142,18 @@ namespace OrderServices.Models
 
 	    [JsonProperty("Scans")]
 	    public Scan[] Scans { get; set; }
+
+        [JsonProperty("TemperatureControl")]
+        public long TemperatureControl { get; set; }
+
+        [JsonProperty("ChainOfCustody")]
+        public long ChainOfCustody { get; set; }
+
+        [JsonProperty("DangerousGoods")]
+        public long DangerousGoods { get; set; }
+
+        [JsonProperty("InsideDelivery")]
+        public long InsideDelivery { get; set; }
     }
     public class ClientQuoteRequest : BaseRequest
     {
@@ -119,6 +171,18 @@ namespace OrderServices.Models
 
 	    [JsonProperty("Package")]
 	    public Package[] Package { get; set; }
+
+        [JsonProperty("TemperatureControl")]
+        public long TemperatureControl { get; set; }
+
+        [JsonProperty("ChainOfCustody")]
+        public long ChainOfCustody { get; set; }
+
+        [JsonProperty("DangerousGoods")]
+        public long DangerousGoods { get; set; }
+
+        [JsonProperty("InsideDelivery")]
+        public long InsideDelivery { get; set; }
     }
     public class ClientQuoteResponse : BaseResponse
     {
@@ -127,6 +191,18 @@ namespace OrderServices.Models
 
 	    [JsonProperty("PriceBreakup")]
 	    public PriceBreakup PriceBreakup { get; set; }
+
+        [JsonProperty("TemperatureControl")]
+        public long TemperatureControl { get; set; }
+
+        [JsonProperty("ChainOfCustody")]
+        public long ChainOfCustody { get; set; }
+
+        [JsonProperty("DangerousGoods")]
+        public long DangerousGoods { get; set; }
+
+        [JsonProperty("InsideDelivery")]
+        public long InsideDelivery { get; set; }
     }
     public class ClientShipmentCancellationRequest : BaseRequest
     {
@@ -342,6 +418,8 @@ namespace OrderServices.Models
 
         [JsonProperty("DeliveryAddressSave")]
         public int DeliveryAddressSave { get; set; }
+
+       
     }
 
     public class OrderInfo
@@ -489,5 +567,8 @@ namespace OrderServices.Models
 
         [JsonProperty("PickupAddressSave")]
         public int PickupAddressSave { get; set; }
+
+        [JsonProperty("PickupImageRequired")]
+        public long PickupImageRequired { get; set; }
     }
 }
